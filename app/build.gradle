@@ -64,4 +64,5 @@ dependencies {
     androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVersion") {
         exclude group: "com.android.support"
     }
+    testCompile "junit:junit:$junitVersion"
 }
