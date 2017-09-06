@@ -25,6 +25,7 @@ android {
         versionName props_versionname
         minSdkVersion props_minsdkversion
         targetSdkVersion props_targetsdkversion
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -60,4 +61,7 @@ final def supportLibraryVersion = "26.0.2"
 dependencies {
     compile "com.android.support:appcompat-v7:$supportLibraryVersion"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$props_kotlinversion"
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVersion") {
+        exclude group: "com.android.support"
+    }
 }
