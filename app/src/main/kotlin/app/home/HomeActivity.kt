@@ -14,13 +14,18 @@ internal class HomeActivity : AppCompatActivity(), BreedListViewImpl.Callback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        breedListCoordinator = BreedListCoordinator(list, BreedListViewImpl(
+        breedListCoordinator = BreedListCoordinator(BreedListViewImpl(
                 contentView = list,
                 guideView = scroll_guide,
                 loadingView = progress,
                 errorView = error,
                 callback = this))
         breedListCoordinator.loadMore()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        breedListCoordinator.destroy()
     }
 
     override fun onLoadRequested() {

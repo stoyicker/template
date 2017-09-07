@@ -1,5 +1,6 @@
 package app.home
 
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.FrameLayout
@@ -13,6 +14,15 @@ internal class BreedListViewImpl(
         callback: Callback) : BreedListCoordinator.View {
 
     init {
+        val layoutManager = LinearLayoutManager(contentView.context)
+        contentView.adapter = BreedAdapter()
+        contentView.layoutManager = layoutManager
+        contentView.setHasFixedSize(false)
+        contentView.addOnScrollListener(object : EndlessLoadOnScrollListener(layoutManager) {
+            override fun loadMore() {
+                callback.onLoadRequested()
+            }
+        })
         errorView.setOnClickListener { callback.onLoadRequested() }
     }
 

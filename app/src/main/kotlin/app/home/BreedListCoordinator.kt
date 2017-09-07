@@ -1,7 +1,5 @@
 package app.home
 
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import app.home.api.ApiWrapper
 import app.home.api.breeds.BreedMapper
 import app.home.api.breeds.BreedResponse
@@ -10,40 +8,33 @@ import retrofit2.Callback
 import retrofit2.Response
 
 internal class BreedListCoordinator(
-        recyclerView: RecyclerView,
         private val view: BreedListCoordinator.View) {
     private val breedMapper = BreedMapper()
     private var page: Int = 0
-
-    init {
-        recyclerView.adapter = BreedAdapter()
-        recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
-        recyclerView.setHasFixedSize(false)
-        // TODO Add onScrollListener to load more items
-    }
+    private var ongoingCall: Call<BreedResponse>? = null
 
     fun loadMore() {
         view.hideError()
         view.showLoading()
-        ApiWrapper.getBreeds(object : Callback<BreedResponse> {
+        ongoingCall = ApiWrapper.getBreeds(object : Callback<BreedResponse> {
             override fun onFailure(call: Call<BreedResponse>?, t: Throwable?) {
                 stateError()
             }
 
             override fun onResponse(call: Call<BreedResponse>?, response: Response<BreedResponse>?) {
                 if (response?.isSuccessful == true) {
-                    response.body()
-                            ?.message
-                            ?.subList(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE)
-                            ?.map { breedMapper.from(it) }
-                            ?.let {
-                        view.apply {
-                            updateContent(it)
-                            hideLoading()
-                            hideError()
-                        }
-                        page++
-                    } ?: stateError()
+                    val list = response.body()?.message
+                            list?.subList(page * PAGE_SIZE,
+                                    Math.min(page * PAGE_SIZE + PAGE_SIZE, list.size))
+                                    ?.map { breedMapper.from(it) }
+                                    ?.let {
+                                        view.apply {
+                                            updateContent(it)
+                                            hideLoading()
+                                            hideError()
+                                        }
+                                        page++
+                                    } ?: stateError()
                 } else {
                     stateError()
                 }
@@ -56,6 +47,12 @@ internal class BreedListCoordinator(
                 }
             }
         })
+    }
+
+    fun destroy() {
+        if (ongoingCall?.isCanceled == false) {
+            ongoingCall?.cancel()
+        }
     }
 
     interface View {

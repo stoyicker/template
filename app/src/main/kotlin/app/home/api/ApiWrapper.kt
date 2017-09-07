@@ -15,8 +15,8 @@ internal object ApiWrapper {
             .build()
             .create(Api::class.java)
 
-    fun getBreeds(callback: Callback<BreedResponse>) {
-        delegate.getBreeds().enqueue(callback)
+    fun getBreeds(callback: Callback<BreedResponse>) = delegate.getBreeds().also {
+        it.enqueue(callback)
     }
 }
 
