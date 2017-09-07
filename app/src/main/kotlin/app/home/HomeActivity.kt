@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_home.list
 import kotlinx.android.synthetic.main.activity_home.progress
 import kotlinx.android.synthetic.main.activity_home.scroll_guide
 
-internal class HomeActivity : AppCompatActivity() {
+internal class HomeActivity : AppCompatActivity(), BreedListViewImpl.Callback {
     private lateinit var breedListCoordinator: BreedListCoordinator
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +18,12 @@ internal class HomeActivity : AppCompatActivity() {
                 contentView = list,
                 guideView = scroll_guide,
                 loadingView = progress,
-                errorView = error))
+                errorView = error,
+                callback = this))
+        breedListCoordinator.loadMore()
+    }
+
+    override fun onLoadRequested() {
         breedListCoordinator.loadMore()
     }
 }

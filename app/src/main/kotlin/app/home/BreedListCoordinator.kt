@@ -50,7 +50,7 @@ internal class BreedListCoordinator(
             }
 
             private fun stateError() {
-                view.apply{
+                view.apply {
                     hideLoading()
                     showError()
                 }

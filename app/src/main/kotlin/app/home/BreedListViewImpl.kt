@@ -9,7 +9,13 @@ internal class BreedListViewImpl(
         private val contentView: RecyclerView,
         private val guideView: View,
         private val loadingView: View,
-        private val errorView: View) : BreedListCoordinator.View {
+        private val errorView: View,
+        callback: Callback) : BreedListCoordinator.View {
+
+    init {
+        errorView.setOnClickListener { callback.onLoadRequested() }
+    }
+
     override fun showLoading() {
         pushInfoArea()
         loadingView.visibility = View.VISIBLE
@@ -33,6 +39,10 @@ internal class BreedListViewImpl(
     override fun updateContent(items: Iterable<PresentationBreed>) {
         (contentView.adapter as BreedAdapter).add(items)
         guideView.visibility = View.VISIBLE
+    }
+
+    interface Callback {
+        fun onLoadRequested()
     }
 
     private fun pushInfoArea() {
