@@ -66,6 +66,7 @@ final def espressoVersion = "3.0.1"
 final def junitVersion = "4.12"
 final def supportLibraryVersion = "26.0.2"
 dependencies {
+    compile project(path: ":domain")
     compile "com.android.support:appcompat-v7:$supportLibraryVersion"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$props_kotlinversion"
     androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVersion") {

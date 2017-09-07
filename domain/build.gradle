@@ -1,0 +1,24 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    final def dokkaPluginVersion = "0.9.15"
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$props_kotlinversion"
+        classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:$dokkaPluginVersion"
+    }
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'org.jetbrains.dokka'
+
+repositories {
+    jcenter()
+}
+final def junitVersion = "4.12"
+final def rxJavaVersion = "2.1.3"
+dependencies {
+    compile "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$props_kotlinversion"
+    testCompile "junit:junit:$junitVersion"
+}
