@@ -72,7 +72,8 @@ internal class BreedAdapter : RecyclerView.Adapter<BreedAdapter.ViewHolder>() {
         }
 
         private fun updatePicture(newPictureUrl: String) {
-            Picasso.with(pictureView.context).load(newPictureUrl).into(pictureView)
+            Picasso.with(pictureView.context).load(newPictureUrl)
+                    .into(pictureView)
         }
     }
 }
