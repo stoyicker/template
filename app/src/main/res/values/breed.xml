@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="breeds_footer_padding">32dp</dimen>
     <dimen name="breed_padding">4dp</dimen>
     <dimen name="breed_margin">4dp</dimen>
+
+    <string name="breed_load_error_action">RETRY</string>
+    <string name="breed_load_error_description">Failed to load</string>
+    <string name="breed_scroll_to_see_more">Scroll to see more breeds!</string>
 </resources>

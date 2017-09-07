@@ -10,7 +10,7 @@ import android.widget.TextView
 import com.squareup.picasso.Picasso
 import jorge.template.blank.R
 
-internal class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+internal class BreedAdapter : RecyclerView.Adapter<BreedAdapter.ViewHolder>() {
     private var items = emptyList<PresentationBreed>()
 
     init {
@@ -42,6 +42,14 @@ internal class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
             }
         }
         holder?.renderPartial(payload)
+    }
+
+    fun add(newItems: Iterable<PresentationBreed>) {
+        if (!newItems.none()) {
+            val additionStart = items.size
+            items += newItems
+            notifyItemRangeInserted(additionStart, newItems.count())
+        }
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -1,4 +1,4 @@
-package app.home.api
+package app.home.api.breeds
 
 import app.home.PresentationBreed
 
