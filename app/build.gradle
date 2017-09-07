@@ -62,10 +62,11 @@ final def supportLibraryVersion = "26.0.2"
 dependencies {
     compile "com.android.support:appcompat-v7:$supportLibraryVersion"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$props_kotlinversion"
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+    compile "com.android.support:recyclerview-v7:$supportLibraryVersion"
+    testCompile "junit:junit:$junitVersion"
     androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVersion") {
         exclude group: "com.android.support"
     }
-    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    compile "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
-    testCompile "junit:junit:$junitVersion"
 }
