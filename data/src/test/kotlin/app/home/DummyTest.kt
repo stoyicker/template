@@ -1,4 +1,4 @@
-package domain
+package app.home
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

@@ -11,28 +11,18 @@ buildscript {
     }
 }
 
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'org.jetbrains.dokka-android'
 
 android {
     compileSdkVersion Integer.parseInt(props_compilesdkversion)
     buildToolsVersion props_buildtoolsversion
     defaultConfig {
-        applicationId props_applicationidbase
         versionCode Integer.parseInt(props_versioncode)
         versionName props_versionname
         minSdkVersion props_minsdkversion
         targetSdkVersion props_targetsdkversion
-<<<<<<< HEAD
-<<<<<<< HEAD
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-=======
->>>>>>> Add Gradle stuff
-=======
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
->>>>>>> Add UI tests
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -57,21 +47,14 @@ android {
     		it.setIgnore(true)
     	}
     }
+    publishNonDefault true
 }
 repositories {
     jcenter()
-    google()
 }
-final def espressoVersion = "3.0.1"
 final def junitVersion = "4.12"
-final def supportLibraryVersion = "26.0.2"
 dependencies {
     compile project(path: ":domain")
-    debugCompile project(path: ":data", configuration: "debug")
-    compile "com.android.support:appcompat-v7:$supportLibraryVersion"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$props_kotlinversion"
-    androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVersion") {
-        exclude group: "com.android.support"
-    }
     testCompile "junit:junit:$junitVersion"
 }
