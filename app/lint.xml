@@ -6,4 +6,7 @@
     <issue id="UnusedResources" severity="ignore" />
     <!-- This check is broken when using KotlinX -->
     <issue id="UnusedIds" severity="ignore" />
+    <issue id="Overdraw">
+        <ignore regexp="breed_item_background" />
+    </issue>
 </lint>

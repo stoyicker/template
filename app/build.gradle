@@ -58,6 +58,7 @@ repositories {
 final def espressoVersion = "3.0.1"
 final def junitVersion = "4.12"
 final def retrofitVersion = "2.3.0"
+final def picassoVersion = "2.5.2"
 final def supportLibraryVersion = "26.0.2"
 dependencies {
     compile "com.android.support:appcompat-v7:$supportLibraryVersion"
@@ -65,6 +66,7 @@ dependencies {
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
     compile "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
     compile "com.android.support:recyclerview-v7:$supportLibraryVersion"
+    compile "com.squareup.picasso:picasso:$picassoVersion"
     testCompile "junit:junit:$junitVersion"
     androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVersion") {
         exclude group: "com.android.support"
