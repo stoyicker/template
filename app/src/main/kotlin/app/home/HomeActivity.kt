@@ -19,5 +19,6 @@ internal class HomeActivity : AppCompatActivity() {
                 guideView = scroll_guide,
                 loadingView = progress,
                 errorView = error))
+        breedListCoordinator.loadMore()
     }
 }
