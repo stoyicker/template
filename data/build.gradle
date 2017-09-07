@@ -53,8 +53,12 @@ repositories {
     jcenter()
 }
 final def junitVersion = "4.12"
+final def retrofitVersion = "2.3.0"
 dependencies {
     compile project(path: ":domain")
     compile "org.jetbrains.kotlin:kotlin-stdlib:$props_kotlinversion"
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
     testCompile "junit:junit:$junitVersion"
 }
