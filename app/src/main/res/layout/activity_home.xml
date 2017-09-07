@@ -2,11 +2,12 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:overScrollMode="never" />
     <android.support.v4.widget.ContentLoadingProgressBar
         android:id="@+id/progress"
         android:layout_width="match_parent"
@@ -16,24 +17,24 @@
         style="?android:attr/android:progressBarStyleHorizontal" />
     <LinearLayout
         android:id="@+id/error"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
         android:gravity="center"
+        android:orientation="vertical"
         android:visibility="gone">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-            android:text="@string/breed_load_error_description" />
+            android:text="@string/breed_load_error_description"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/breed_load_error_action"
             android:textAppearance="@style/TextAppearance.AppCompat.Button"
-            android:textStyle="bold"
-            android:text="@string/breed_load_error_action" />
-        </LinearLayout>
+            android:textStyle="bold"/>
+    </LinearLayout>
     <TextView
         android:id="@+id/scroll_guide"
         android:layout_width="wrap_content"
