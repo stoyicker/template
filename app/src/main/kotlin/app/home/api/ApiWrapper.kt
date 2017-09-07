@@ -1,7 +1,7 @@
 package app.home.api
 
+import app.home.api.breeds.BreedResponse
 import app.network.NetworkClient
-import okhttp3.ResponseBody
 import retrofit2.Callback
 import retrofit2.Retrofit
 
@@ -13,7 +13,7 @@ internal object ApiWrapper {
             .build()
             .create(Api::class.java)
 
-    fun getBreeds(callback: Callback<ResponseBody>) {
+    fun getBreeds(callback: Callback<BreedResponse>) {
         delegate.getBreeds().enqueue(callback)
     }
 }
