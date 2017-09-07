@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit
 /**
  * A source is a cache-enabled request execution abstraction that delegates caching to Store.
  */
-internal object PostSource : RequestFacade<DomainPostParameters, DomainPostResult> {
+internal object PostSource : RequestFacade<DomainPostParameters, Single<DomainPostResult>> {
     private val store : Store<PostResponse, PostParameters>
     private val requestMapper = PostRequestMapper()
     private val responseMapper = PostResponseMapper()

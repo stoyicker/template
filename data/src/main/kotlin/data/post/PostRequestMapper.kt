@@ -1,6 +1,6 @@
 package data.post
 
-import data.ObjectMapper
+import domain.ObjectMapper
 import domain.post.DomainPostParameters
 
 internal class PostRequestMapper : ObjectMapper<DomainPostParameters, PostParameters> {

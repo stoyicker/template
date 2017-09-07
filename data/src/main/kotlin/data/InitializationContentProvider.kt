@@ -3,6 +3,7 @@ package data
 import android.content.ContentProvider
 import android.content.ContentValues
 import android.net.Uri
+import domain.DomainHolder
 
 /**
  * This will get created when the app runs so we can use it as a 'hacky' way to perform
@@ -10,7 +11,7 @@ import android.net.Uri
  */
 internal class InitializationContentProvider : ContentProvider() {
     override fun onCreate(): Boolean {
-        // TODO Initialize data
+        DomainHolder.functionalityProvider = FunctionalityProviderImpl
         return true
     }
 
