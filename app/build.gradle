@@ -55,6 +55,7 @@ repositories {
     jcenter()
     google()
 }
+final def findbugsVersion = "3.0.1"
 final def espressoVersion = "3.0.1"
 final def junitVersion = "4.12"
 final def supportLibraryVersion = "26.0.2"
@@ -66,5 +67,6 @@ dependencies {
     androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVersion") {
         exclude group: "com.android.support"
     }
+    androidTestCompile "com.google.code.findbugs:jsr305:$findbugsVersion"
     testCompile "junit:junit:$junitVersion"
 }

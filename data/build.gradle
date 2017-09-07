@@ -54,11 +54,15 @@ repositories {
 }
 final def junitVersion = "4.12"
 final def retrofitVersion = "2.3.0"
+final def storeVersion = "3.0.0-beta"
 dependencies {
     compile project(path: ":domain")
     compile "org.jetbrains.kotlin:kotlin-stdlib:$props_kotlinversion"
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
     compile "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     compile "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+    compile "com.nytimes.android:store-kotlin3:$storeVersion"
+    compile "com.nytimes.android:middleware-moshi3:$storeVersion"
+    compile "com.nytimes.android:filesystem3:$storeVersion"
     testCompile "junit:junit:$junitVersion"
 }
