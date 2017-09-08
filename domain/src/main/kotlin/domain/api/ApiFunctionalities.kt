@@ -1,7 +1,7 @@
 package domain.api
 
-import domain.post.DomainPostParameters
-import domain.post.DomainPostResult
+import domain.api.post.DomainPostParameters
+import domain.api.post.DomainPostResult
 import io.reactivex.Single
 
 /**

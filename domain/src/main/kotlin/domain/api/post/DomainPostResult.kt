@@ -1,4 +1,4 @@
-package domain.post
+package domain.api.post
 
 /**
  * Response of the post endpoint.

@@ -9,8 +9,8 @@ import com.nytimes.android.external.store3.middleware.moshi.MoshiParserFactory
 import data.RequestFacade
 import data.api.Api
 import data.api.ApiHolder
-import domain.post.DomainPostParameters
-import domain.post.DomainPostResult
+import domain.api.post.DomainPostParameters
+import domain.api.post.DomainPostResult
 import io.reactivex.Single
 import okio.BufferedSource
 import java.util.concurrent.TimeUnit

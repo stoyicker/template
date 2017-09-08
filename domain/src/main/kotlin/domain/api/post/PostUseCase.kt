@@ -1,4 +1,4 @@
-package domain.post
+package domain.api.post
 
 import domain.DomainHolder
 import domain.SingleDisposableUseCase
