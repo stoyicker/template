@@ -25,14 +25,7 @@ android {
         versionName props_versionname
         minSdkVersion props_minsdkversion
         targetSdkVersion props_targetsdkversion
-<<<<<<< HEAD
-<<<<<<< HEAD
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-=======
->>>>>>> Add Gradle stuff
-=======
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
->>>>>>> Add UI tests
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
