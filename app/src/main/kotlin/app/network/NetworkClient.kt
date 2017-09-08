@@ -1,6 +1,7 @@
 package app.network
 
-import android.content.Context
+import android.app.Application
+import android.content.isInternetAvailable
 import okhttp3.Cache
 import okhttp3.CacheControl
 import okhttp3.Interceptor
@@ -11,10 +12,11 @@ internal object NetworkClient {
     internal lateinit var client: OkHttpClient
         private set
 
-    fun init(context: Context) {
+    fun init(application: Application) {
         client = OkHttpClient.Builder()
                 .addNetworkInterceptor(shortTimeCacheInterceptor())
-                .cache(Cache(context.cacheDir, 10 * 1024 * 1024))
+                .addInterceptor(offlineCacheInterceptor(application))
+                .cache(Cache(application.cacheDir, 10 * 1024 * 1024))
                 .build()
     }
 
@@ -24,6 +26,18 @@ internal object NetworkClient {
                         .maxAge(2, TimeUnit.MINUTES)
                         .build().toString())
                 .build()
+    }
+
+    private fun offlineCacheInterceptor(application: Application) = Interceptor {
+        if (application.isInternetAvailable()) {
+            it.proceed(it.request())
+        } else {
+            it.proceed(it.request().newBuilder()
+                    .cacheControl(CacheControl.Builder()
+                            .maxStale(1, TimeUnit.DAYS)
+                            .build())
+                    .build())
+        }
     }
 }
 
