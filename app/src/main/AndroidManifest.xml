@@ -6,6 +6,7 @@
     <application
         android:allowBackup="false"
         android:icon="@null"
+        android:name="app.TemplateApplication"
         android:label="@string/app_label">
         <activity
             android:name="app.home.HomeActivity"
