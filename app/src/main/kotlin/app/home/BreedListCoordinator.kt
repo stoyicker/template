@@ -18,7 +18,9 @@ internal class BreedListCoordinator(
         view.showLoading()
         ongoingCall = ApiWrapper.getBreeds(object : Callback<BreedResponse> {
             override fun onFailure(call: Call<BreedResponse>?, t: Throwable?) {
-                stateError()
+                if (call?.isCanceled != true) {
+                    stateError()
+                }
             }
 
             override fun onResponse(call: Call<BreedResponse>?, response: Response<BreedResponse>?) {

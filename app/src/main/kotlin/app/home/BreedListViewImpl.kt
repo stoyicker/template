@@ -12,7 +12,6 @@ internal class BreedListViewImpl(
         private val loadingView: View,
         private val errorView: View,
         callback: Callback) : BreedListCoordinator.View {
-
     init {
         val layoutManager = LinearLayoutManager(contentView.context)
         contentView.adapter = BreedAdapter()

@@ -14,7 +14,7 @@ internal abstract class EndlessLoadOnScrollListener(
     override fun onScrolled(view: RecyclerView?, dx: Int, dy: Int) {
         val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
         val totalItemCount = layoutManager.itemCount
-        if (loading && (totalItemCount > previousTotalItemCount)) {
+        if (loading && totalItemCount > previousTotalItemCount) {
             loading = false
             previousTotalItemCount = totalItemCount
         }
