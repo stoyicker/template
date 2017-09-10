@@ -6,9 +6,9 @@ import app.permission.PermissionRequester
 
 internal class ParseDeviceSongsCoordinator(
         private val context: Context,
-        private val permissionRequester: PermissionRequester)
+        private val permissionRequester: PermissionRequester,
+        private val resultCallback: ResultCallback)
     : PermissionRequestListener {
-
     override fun onPermissionRequestCompleted(vararg granted: Boolean) {
         if (granted[0]) {
             actionDoParse(context)
@@ -18,10 +18,10 @@ internal class ParseDeviceSongsCoordinator(
     }
 
     fun actionDoParse(context: Context) {
-        var songs = emptyList<Song>()
         if (permissionRequester.requestPermissions(
                 this, android.Manifest.permission.READ_EXTERNAL_STORAGE)) {
-        context.contentResolver.query(
+            var songs = emptyList<Song>()
+            context.contentResolver.query(
                     android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
                     null,
                     null,
@@ -49,6 +49,11 @@ internal class ParseDeviceSongsCoordinator(
                     }
                 }
             }
+            resultCallback.onSongsParsed(songs)
         }
+    }
+
+    interface ResultCallback {
+        fun onSongsParsed(songs: Iterable<Song>)
     }
 }
