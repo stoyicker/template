@@ -26,7 +26,7 @@ internal class ParseDeviceSongsCoordinator(
                     null,
                     null,
                     null,
-                    null).use { cursor ->
+                    null)?.use { cursor ->
                 cursor.moveToFirst()
                 while (!cursor.isAfterLast) {
                     cursor.apply {
