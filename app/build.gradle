@@ -1,19 +1,18 @@
 buildscript {
 	repositories {
+        google()
         jcenter()
     }
-    final def androidPluginVersion = "2.3.3"
-    final def dokkaPluginVersion = "0.9.15"
     dependencies {
-        classpath "com.android.tools.build:gradle:$androidPluginVersion"
+        classpath 'com.android.tools.build:gradle:3.3.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$props_kotlinversion"
-        classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:$dokkaPluginVersion"
+        classpath 'org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.17'
     }
 }
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-android-extensions'
 apply plugin: 'org.jetbrains.dokka-android'
 
 android {
@@ -25,11 +24,11 @@ android {
         versionName props_versionname
         minSdkVersion props_minsdkversion
         targetSdkVersion props_targetsdkversion
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     dexOptions {
         preDexLibraries false
@@ -55,14 +54,25 @@ repositories {
     jcenter()
     google()
 }
-final def espressoVersion = "3.0.1"
-final def junitVersion = "4.12"
-final def supportLibraryVersion = "26.0.2"
 dependencies {
-    compile "com.android.support:appcompat-v7:$supportLibraryVersion"
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$props_kotlinversion"
-    androidTestCompile("com.android.support.test.espresso:espresso-core:$espressoVersion") {
-        exclude group: "com.android.support"
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$props_kotlinversion"
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+//    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+//    implementation 'com.squareup.okhttp3:okhttp:3.13.1'
+//    implementation 'com.squareup.moshi:moshi:1.8.0'
+//    implementation 'com.squareup.moshi:moshi-adapters:1.8.0'
+//    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+//    implementation 'com.squareup.retrofit2:converter-moshi:2.5.0'
+//    implementation 'io.reactivex.rxjava2:rxjava:2.2.7'
+//    implementation 'com.squareup.picasso:picasso:2.71828'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.24.5'
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.2') {
+        exclude group: 'com.android.support'
     }
-    testCompile "junit:junit:$junitVersion"
+    androidTestImplementation('com.android.support.test:rules:1.0.2') {
+        exclude group: 'com.android.support'
+    }
+    androidTestImplementation 'org.mockito:mockito-android:2.24.5'
 }
